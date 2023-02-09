@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="registerForm">
+        <form action="" method="POST" autocomplete="off">
+            {% csrf_token %}
+            {% for message in messages %}
+                 <p class="message">{{message}} <button id="close">close</button></p>
+            {% endfor %}
+           
+            <div class="form_title">
+                <h2>Create Products</h2>
+            </div>
+            <div class="formInput">
+               {{form.as_p}}
+            </div>
+            <div class="formInput">
+                <button class="submitBtn" type="submit" >Create</button>
+            </div>
+        </form>
+     </div>
+   </div>
+{% endblock %}

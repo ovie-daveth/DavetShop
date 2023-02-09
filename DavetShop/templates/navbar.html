@@ -1,0 +1,44 @@
+<nav class="nav">
+    <div class="logo">
+        Davet<span>Shop</span> 
+    </div>
+    <div class="menu">
+        <p><a href="">Home</a></p>
+        <p><a href="">Shop</a></p>
+        <p><a href="">Products</a></p>
+        <p><a href="">Blog</a></p>
+        {% if request.user.is_authenticated %}
+        <button class="dashboardBtn"> <a href="">Dashboard</a> </button>
+        {% else %}
+        <button ><a href=" {% url 'core:register' %} ">Register</a></button>
+       <button><a href=" {% url 'core:login' %} ">Login</a></button>
+       {% endif %}
+       
+    </div>
+    <div class="carts">
+        <p id="search"><i class="uil uil-search"></i></p>
+        <p><i class="uil uil-user"></i></p>
+        <p><i class="uil uil-shopping-cart-alt"></i></p>
+        <p id="menu"><i class="uil uil-bars"></i></p>
+    </div>
+</nav>
+<div class="sidemenu">
+    <ul>
+        <li><a href=""><span><i class="uil uil-user-check"></i></span>
+            Register as a vendor</a></li>
+        <li><a href="{% url 'item:create' %}"><span><i class="uil uil-wallet"></i></span> Sell</a></li>
+    </ul>
+    {% if request.user.is_authenticated %}
+   
+    <button ><a href=" {% url 'core:logout' %} ">Logout</a></button>
+    {% endif %}
+</div>
+<script>
+    const menuBar = document.getElementById('menu')
+
+    const sideBar = document.querySelector('.sidemenu')
+
+    menuBar.onclick = () => {
+        sideBar.classList.toggle('show')
+    }
+</script>

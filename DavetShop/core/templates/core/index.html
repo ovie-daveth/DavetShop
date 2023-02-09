@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    {% for message in messages %}
+         <p class="message">{{message}} <button id="close">close</button></p>
+    {% endfor %}
+
+    <div class="home" id="home">
+          <div class="content">
+            <h4>Davet<span>Shop</span> Collection</h4>
+            <h1>WE GOT ALL YOU NEED TO STAND OUT</h1>
+            <p>There's Nothing Like trend</p>
+            <button>Shop Now <span><i class="uil uil-arrow-right"></i></span></button>
+          </div>
+          <div class="navigate">
+          <a href="#items">  <i class="uil uil-arrow-circle-down"></i></a>
+          </div>
+    </div>
+    <div class="items_container" id="items">
+        <h2>Our Trending <span>Products</span></h2>
+        <div class="items">
+            {% for item in items %}
+            <div class="item">
+                <div class="item_head">
+                   <div class="img"> <img width="220px" src={{item.image.url}} alt=""></div>
+                    <div class="desc">
+                        <h3> {{item.name}} </h3>
+                        <div class="star">
+                            <i class="uis uis-star"></i>
+                            <i class="uis uis-star"></i>
+                            <i class="uis uis-star"></i>
+                            <i class="uis uis-star"></i>
+                            <i class="uis uis-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="item_body">
+                   <div class="priced">
+                    <p class="price"><span><i class="uil uil-dollar-alt"></i></span>{{item.price}}</p>
+                    <p class="slash"><span><i class="uil uil-dollar-alt"></i></span>{{item.slashed}}</p>
+                   </div>
+                    <p class="seller">{{item.created_by}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+   <div class="footer">
+    <h3>Categories</h3>
+    <div class="category">
+        {% for category in categories %}
+        <div class="category_item">
+            {{category.name}}
+        </div>
+        {% endfor %}
+    </div>
+   </div>
+   
+</div>
+
+{% endblock %}
